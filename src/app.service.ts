@@ -14,7 +14,7 @@ export class AppService {
       service: 'gmail',
       auth: {
         user: 'henokemafm@gmail.com', 
-        pass:"afre zvuu clhw xzsb" 
+        pass:"" 
       }
      });
   }

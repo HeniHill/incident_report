@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { EventPattern, MessagePattern } from '@nestjs/microservices';
+import { CreateIncidentEvent } from './CreateIncident.event';
 
 @Controller()
 export class AppController {
@@ -9,7 +10,7 @@ export class AppController {
 
   
     @EventPattern('new_incident')
-    handleIncident(data:any){
+    handleIncident(data: CreateIncidentEvent){
      this.appService.handleIncident(data);
     }
 }
