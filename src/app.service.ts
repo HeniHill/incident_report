@@ -14,19 +14,30 @@ export class AppService {
       service: 'gmail',
       auth: {
         user: 'henokemafm@gmail.com', 
-        pass:"0912986463@G" 
+        pass:"afre zvuu clhw xzsb" 
       }
      });
   }
 
-  async sendMail(to: string, subject: string, text: string, html?: string){
+  async sendMail(to: string, subject: string, html: string){
 
     const mailOption={
-      from: 'henokemafm@example.com',
+      from: 'henokemafm@gmail.com',
       to,
       subject,
-      text,
-      html,
+      html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333;">
+          <h1 style="color: #4CAF50;">New Incident Reported!</h1>
+          <p>Dear Team,</p>
+          <p>${html}</p>
+         
+          <p>>support page</a>.</p>
+          <footer style="font-size: 12px; color: #777777;">
+              &copy; 2025 ATZ Company. All rights reserved.<br>
+              +251214785
+          </footer>
+      </div>
+  `,
     };
 
     return await this.transporter.sendMail(mailOption);
@@ -36,6 +47,6 @@ export class AppService {
 
   handleIncident(data: CreateIncidentEvent){
    console.log('New Incident received', data);
-   this.sendMail("henokemafm@example.com","Test Mailer","This is Test microservice")
+   this.sendMail("henokemafm@gmail.com",data.data.title,data.data.description);
   }
 }
